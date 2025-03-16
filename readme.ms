@@ -1,3 +1,15 @@
+// requisição http precisa ter dois principais recusos
+
+// Metodo http e url
+
+// http status code
+// quando devolvemos uma resposta p/ o front temos varios tipos de 
+// codigos numericos p/ comunicar pro front se o codigo deu certo ou
+// não se deu erro foi por palta de informações e tal
+// importancia semantica de font pro back
+
+// --------------------------------------
+
 // streams do node:
 
 // ler pequenas partes de alguma coisa e ja cinseguir trabalhar com aqueles 

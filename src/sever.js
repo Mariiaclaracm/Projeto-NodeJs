@@ -1,42 +1,32 @@
 import http from 'http'
-
-// requisição http precisa ter dois principais recusos
-
-// Metodo http e url
-
-// http status code
-// quando devolvemos uma resposta p/ o front temos varios tipos de 
-// codigos numericos p/ comunicar pro front se o codigo deu certo ou
-// não se deu erro foi por palta de informações e tal
-// importancia semantica de font pro back
-
-// 
-
+import { json } from './middlewares/json.js'
 
 const users = []
 
-const sever = http.createServer((req, res)=>{
+const sever = http.createServer(async(req, res)=>{
     const {method, url}=req
+
+    await json(req,res)
 
     if(method ==='GET' && url === '/users'){
         return res
-        .setHeader('Content-type', 'application/json')
         .end(JSON.stringify(users))
     }
     if(method==='POST' && url==='/users'){
+        const{name,email} = req.body
+
         users.push({
             id:1,
-            name:'john',
-            email:'johndoe@example.com',
+            name,
+            email,
         })
         return res.writeHead(201).end()
     }
 
     
 
-    // return res.writeHead(404).end()
-    return res.end('hello')
+    return res.writeHead(404).end()
+    // return res.end('hello')
 })
 
 sever.listen(3333)
-//no caso o localhost
